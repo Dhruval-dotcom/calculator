@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="card">
+        <div class="input-t">
+            <div id="display-container">
+                <div id="display1">ythbghyt<small><small><span></span></small></small></div>
+            </div>
+            <div id="h1">ythbghyt<small><small><span></span></small></small></div>
+        </div>
+        <div class="deg">
+            <button onclick='' class="innerdeg">DEG</button>
+            <button onclick='' class="innerdeg">F-E</button>
+
+        </div>
+        <div class="m">
+            <button onclick='' class="innerm">MC</button>
+            <button onclick='getElementById("h1").innerHTML=mr()' class="innerm">MR</button>
+            <button onclick='getElementById("h1").innerHTML=mp()' class="innerm">M+</button>
+            <button onclick='' class="innerm">M-</button>
+            <button onclick='' class="innerm">MS</button>
+        </div>
+        <div class="scroller">
+            <div class="trigno">
+                <img src="images/triangular-ruler_318-408362.webp" > Trignometory <img class="chevron"
+                    src="images/chevron-down-removebg-preview.png" >
+                <ul>
+                    <li><button onclick='getElementById("h1").innerHTML=maths("sine")'>sin</button></li>
+                    <li><button onclick='getElementById("h1").innerHTML=maths("cosine")'>cos</button></li>
+                    <li><button onclick='getElementById("h1").innerHTML=maths("tangent")'>tan</button></li>
+                    <li><button >cot</button></li>
+                </ul>
+            </div>
+            <div class="function">
+                <img src="images/106947.png" ><i class="fa-sharp fa-regular fa-ruler-triangle"></i>function <img
+                    class="chevron" src="images/chevron-down-removebg-preview.png" >
+                <ul style="height: 300px;overflow-y: scroll;">
+                    <li><button >acos(x)</button></li>
+                    <li><button >asin(x)</button></li>
+                    <li><button >round(x)</button></li>
+                    <li><button >asin(x)</button></li>
+                    <li><button >x<sup>3</sup></button></li>
+                    <li><button >acos(x)</button></li>
+                    <li><button >asin(x)</button></li>
+                    <li><button >round(x)</button></li>
+                    <li><button >asin(x)</button></li>
+                    <li><button >x<sup>3</sup></button></li>
+                    <li><button >acos(x)</button></li>
+                    <li><button >asin(x)</button></li>
+                    <li><button >round(x)</button></li>
+                    <li><button >asin(x)</button></li>
+                    <li><button >x<sup>3</sup></button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="buttons">
+            <table>
+                <tr>
+                    <td><button onclick='' class="offwhite">2<sup>nd</sup></button></td>
+                    <td><button onclick='' class="offwhite">π</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=PE("E")' class="offwhite">e</button></td>
+                    <td><button onclick='clear2()' class="offwhite">C</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=bsp()' class="offwhite"><img src="images/backspace.png" style="padding-top: 4px;" height="25px" alt=""></button></td>
+                </tr>
+                <tr>
+                    <td><button onclick='' class="offwhite">x<sup>2</sup></button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=maths("res")' class="offwhite"><sup>1</sup>/x</button></td>
+                    <td><button onclick='' class="offwhite">|x|</button></td>
+                    <td><button onclick='' class="offwhite">exp</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("%")' class="offwhite">mod</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick='' class="offwhite"><sup>2</sup>√x</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("(")' class="offwhite">(</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit(")")' class="offwhite">)</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=maths("fact")' class="offwhite">n!</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=operators("/")' class="offwhite">÷</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick='getElementById("h1").innerHTML=power("^")' class="offwhite">x<sup>y</sup></button></td>
+                    <td><button class="offwhite wh" onclick='getElementById("h1").innerHTML=digit("7")'>7</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("8")' class="offwhite wh">8</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("9")' class="offwhite wh">9</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=operators("x")' class="offwhite">x</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick='' class="offwhite">10<sup>x</sup></button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("4")' class="offwhite wh">4</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("5")' class="offwhite wh">5</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("6")' class="offwhite wh">6</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=operators("-")' class="offwhite">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick='getElementById("h1").innerHTML=maths("logTen")' class="offwhite">log</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("1")' class="offwhite wh">1</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("2")' class="offwhite wh">2</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("3")' class="offwhite wh">3</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=operators("+")' class="offwhite">+</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick='getElementById("h1").innerHTML=maths("ln")' class="offwhite">ln</button></td>
+                    <td><button onclick='getElementById("h1").innerHTML=digit("1")' class="offwhite wh"><sup>+</sup>/-</button></td>
+                    <td><button onclick='' class="offwhite wh">0</button></td>
+                    <td><button onclick='' class="offwhite wh">.</button></td>
+                    <td><button onclick='equal()' class="offwhite equal" >=</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
