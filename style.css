@@ -7,8 +7,11 @@
     background: rgb(254,0,0);
     background: linear-gradient(0deg, rgba(254, 0, 0, 0.5) 0%, rgba(219,35,35,1) 100%); 
 }*/
+body{
+    background-color: white;
+}
 .input-t{
-    height:180px;
+    height:147px;
     border: none;
     background: transparent;
 }
@@ -17,18 +20,19 @@
     width: 489px;
     padding-left: 3px;
     margin-left: 35%;
-    margin-top: 3%;
+    margin-top: 7%;
     padding-bottom: 3px;
-    height: 661px;
+    height: 579px;
     margin-bottom: 157px;
 }
-.innerdeg, .innerm{
+.innerm{
     background-color: #f3f3f3;
     border: none;
+    border-radius: 6px;
     width: 94px;
     height: 47px;
+    margin-right: -1px;
     font-size: 22px;
-    
 }
 .innerdeg:hover{
     background-color: #e7cccc54;
@@ -38,19 +42,67 @@
 }
 .buttons{
     position: absolute;  
-    margin-top: 34px;
+    margin-top: 32px;
     background-color: #f3f3f3;
 }
-.offwhite{
-    background-color: #d8d2d24b;
+.offwhite {
     border: none;
-    width: 94px;
-    height: 47px;
     font-size: 22px;
     position: static;
     z-index: 1;
+    width: 94px;
+    height: 47px;
+    border: none;
+    outline: none;
+    color: black;
+    background: #dddbdb;
+    cursor: pointer;
+    position: relative;
+    border-radius: 6px;
+}
+.offwhite:before {
+    content: '';
+    background: linear-gradient(45deg, #cfabab, #c2bbb5);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 4px;
+}
+.offwhite:active {
+    color: #dddbdb;
+}
+.offwhite:active:after {
+    background: transparent;
+}
+.offwhite:hover:before {
+    opacity: 1;
+}
+.offwhite:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #dddbdb;
+    left: 0;
+    top: 0;
+    border-radius: 4px;
+}
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
 .wh{
+    border-radius: 4px;
     background-color: white;
 }
 .offwhite:hover{
@@ -58,7 +110,6 @@
 }
 .scroller{
     background-color: #f3f3f3;
-
     font-size: 22px;
     display: block;
     margin: 4px 0px;
@@ -71,6 +122,14 @@
     margin-left: 4px;
     position: absolute;
 }
+.trigno ul{
+    height: 200px;
+    overflow-y: scroll;
+    width: 160px;
+}
+.function ul{
+    width: 150px; 
+}
 .trigno ul li{
     background-color: white;
     display: none;
@@ -80,18 +139,17 @@
     font-size: 20px;
     padding: auto;
     border: none;
-    width: 50px;
-    height: 30px;
-    margin: 4px 90px;
-}
-
+    width: 100px;
+    height: 35px;
+    margin: 2px 25px;
+}   
 .function ul li button{
     font-size: 20px;
     padding: auto;
     border: none;
     width: 100px;
-    height: 30px;
-    margin: 4px 40px;
+    height: 35px;
+    margin: 2px 20px;
 }
 .function{
     position: absolute;

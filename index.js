@@ -1,346 +1,421 @@
-var decimalPoint =enter =entered =operatorSign =rootNpower_Sign =flo =math =M =firstI =first =second =second1 =answer =theanswer =result =peSign =0
-var opsCheck =dotCounter =0;
-var removeFirstzero ="";
+var set=1;
+var memory=0;
+var screen_expr="",eval_expr="";
 
-function dot(b){
-    if(decimalPoint == ""){
-        enter = entered =b;
-        first += enter;
-        entered +=enter;
-        decimalPoint = ".";
-        dotCounter = 0;
-        return first;
+function displayans(d){
+    document.getElementById("h1").innerHTML = d;
+}
+function appendans(d){
+    document.getElementById("h1").innerHTML +=d;
+}
+function ans(){
+    return document.getElementById("h1").innerHTML;
+}
+
+//function checking is it an operator
+function isop(x){
+    reg=/^[*/+-]$/;
+    return reg.test(x);
+}
+
+//function checking is it a bracket
+function isbrac(x){
+    return (x=='('||x==')')
+}
+
+//include multipy last
+function includemul(){
+    screen_expr+="&#215;";
+    eval_expr+="*";
+    appendans("&#215");
+}
+
+//factorial
+function fact(n){
+    return n==1?1:n*fact(n-1);
+}
+
+//appending digits
+function digit(d){
+    if(d=="dot"){
+        if(/^[0-9]$/.test(eval_expr[eval_expr.length-1])==true){
+            screen_expr+=".";
+            eval_expr+=".";
+            appendans("."); 
+        }
     }else{
-        return first;
-    }
-}
-
-function PE(b){
-    decimalPoint = ".";
-    dotCounter = 15;
-    var cons = b;
-
-    if(peSign == ""){
-        if(operatorSign != "" && first == ""  + operatorSign){
-            first = (cons = "PI")? Math.PI:Math.E;
-        }else if(operatorSign != "" && first > 0 || first < 0){
-            first = (cons == "PI") ? first + "*" + Math.PI:first + "*" +Math.E;
-        }else if(first != "" && operatorSign != ""){
-            first += (cons = "PI")? Math.PI:Math.E;
-        }else if(operatorSign == "" && first != ""){
-            first = (cons == "PI") ? first + "*" + Math.PI:first + "*" +Math.E;
-        }else{
-            first = (cons = "PI")? Math.PI:Math.E;
+        if(set==1){
+            set=0;
+            displayans(d); 
+            screen_expr=eval_expr=d;
         }
-        return first;
-    }
-
-    function mp(){
-        M = first;
-        first= M;
-        return first;
-    }
-    function mr(){
-        first= M;
-        return first;
-    }
-
-    function c(c){
-        document.getElementById("display1").innerHTML =  decimalPoint = operatorSign = rootNpower_Sign = entered = math =first = firstI = second =second1 =answer =theanswer= M =""
-    }
-    
-    function mathematics(){
-        if(math == "sqr"){
-            result=firstI*firstI;
-        }else if(math == "cube"){
-            result=firstI*firstI*firstI;
-        }else if(math == "cubert"){
-            result=Math.cbrt(firstI);
-        }else if(math == "negpos"){
-            result = firstI*-1;
-        }else if(math == "sine"){
-            result=Math.sin(firstI);
-        }else if(math == "cosine"){
-            result=Math.cos(firstI);
-        }else if(math == "tangent"){
-            result=Math.tan(firstI);
-        }else if(math == "ln"){
-            result=Math.log(firstI);
-        }else if(math == "logTen"){
-            result=Math.log10(firstI);
-        }else if(math == "res"){
-            result=(1/firstI);
-        }else if(math == "fact"){
-            n=firstI;
-            firstI=1;
-            while(n>1){
-                firstI*=n;
-                n-=1;
-            }
-            result=firstI;
-        }decimalPoint = (Math.round(result)==result)?"":".";
-    }
-    function prep(){
-        second = eval(second);
-        first=eval(first);
-    }
-
-    function maths(a){
-        math=a;
-        try{
-            if(operatorSign == "+"){
-                prep();
-                firstI=first-second;
-                mathematics();
-                first=second + "+" +result;
-            }else if(operatorSign == "-"){
-                prep();
-                firstI=second-first;
-                mathematics();
-                first=second + "-" + "(" + result + ")";
-            }else if(operatorSign == "*"){
-                prep();
-                firstI=second/first;
-                mathematics();
-                first=second + "/" +result;
-            }else{
-                firstI=first;
-                mathematics();
-                first=result;
-            }
-            return first;
-        }
-    }
-
-    function digit(b){
-        opsCheck=0;
-        dotCounter++;
-        if(first==Infinity || first== NaN){
-            first=0;
-        }
-        peSign = "pes";
-        entered=b;
-        if(rootNpower_Sign!=""){
-            first = (first==="0"&&entered!==".")?entered:first+entered;
-            return second1 + firstI +rootNpower_Sign+first;
-        }else{
-            first = (first==="0"&&entered!==".")?entered:first+entered;
-            theanswer=eval(first)+"";
-            if(theanswer.length>14){
-                theanswer=Math.abs((theanswer).toPrecision(14));
-            }
-            document.getElementById("display1").innerHTML=first;
-            return theanswer;
-        }
-    }
-
-    //base
-    //themes
-
-    function bsp(){
-        first+="";
-        dotCounter--;
-        decimalPoint=dotCounter >=0 ? ".":"";
-        first=first.substr(0,first.length-1);
-        document.getElementById("display1").innerHTML=first;
-        try{
-            eval(first);
-            return first;
-        }catch(first){
-            eval(first);
-            return "";
-        }
-    }
-
-
-    function pow(){
-        first*=1;
-        result=Math.pow(firstI,first);
-    }
-    function roots(){
-        first*=1;
-        result=Math.pow(first,1/firstI).toPrecision(12);
-        result=Math.abs(result);
-    }
-
-    function operators(b){
-        peSign="";
-        if(opsCheck==0){
-            opsCheck=1;
-            document.getElementById("display1").innerHTML=first;
-            try{
-                if(rootNpower_Sign=="^"){
-                    if(operatorSign=="+"){
-                        pow();
-                        answer=result+second;
-                    }else if(operatorSign=="-"){
-                        pow();
-                        answer=result-second;
-                    }else if(operatorSign=="/"){
-                        pow();
-                        answer=result/second;
-                    }else if(operatorSign=="*"){
-                        pow();
-                        answer=result*second;
-                    }else{
-                        pow();
-                        answer=result;
-                    }
-                }
-                if(rootNpower_Sign=="/") //put root sign here
-                {
-                    if(operatorSign=="+"){
-                        roots();
-                        answer=result+second;
-                    }else if(operatorSign=="*"){
-                        roots();
-                        answer=result*second;
-                    }else if(operatorSign=="-"){
-                        roots();
-                        answer=result-second;
-                    }else if(operatorSign=="/"){
-                        roots();
-                        answer=result/second;
-                    }else{
-                        roots();
-                        answer=result;
-                    } 
-                }else if(a=="%"){
-                    answer=second%first;
-                }else{
-                    operatorSign=b;
-                    first+=operatorSign;
-                    decimalPoint="";
-                }
-                rootNpower_Sign="";
-                operatorSign=b;
-                firstI="";
-                second=answer;
-                first=answer+operatorSign;
-                decimalPoint="";
-                document.getElementById("display1").innerHTML=first;
-                return eval(second);
-            }catch(x){
-                if(first != "<span class='red'>Press ON key to start</span>"){
-                    operatorSign=b;
-                    second=eval(first);
-                    first+=operatorSign;
-                    decimalPoint="";
-                }else{
-                    first="<span class='red'>Press ON key to start</span>";
-                }
-                document.getElementById("display1").innerHTML=first;
-                return (second==undefined)?0:eval(second);
-            }
-            
-        }else{
-            operatorSign=b;
-            first+="";
-            first=first.substr(0,first.length-1);
-            first=first*operatorSign;
-            document.getElementById("display1").innerHTML=first;
-            return (second==undefined)?0:eval(second); 
-        }
-
-        function percent(){
-            first=eval(first)*100;
-            return first+"%";
-        }
-        function negpos(){
-            first=(operatorSign=="")?first*=-1:first;
-            return first;
-        }
-        function power(b){
-            rootNpower_Sign=b;
-            if(operatorSign=="+" && second != ""){
-                prep();
-                first=first-second;
-                first="";
-                second1=second+"+";
-                return second + "+" + firstI +rootNpower_Sign;
-            }else if(operatorSign=="-" && second != ""){
-                prep();
-                firstI=first/second;
-                first="";
-                second1=second+"*";
-                return second + "-" + firstI +rootNpower_Sign;
-            }else if(operatorSign=="*" && second != ""){
-                prep();
-                firstI=second-first;
-                first="";
-                second1=second+"-";
-                return second + "*" + firstI +rootNpower_Sign;
-            }else if(operatorSign=="/" && second != ""){
-                prep();
-                firstI=second/first;
-                first="";
-                second1=second+"/";
-                return second + "/" + firstI +rootNpower_Sign;
-            }else{
-                rootNpower_Sign=b;
-                firstI=first;
-                first="";
-                return firstI+rootNpower_Sign;
-            }
-        }
-
-        function equal(){
-            document.getElementById("display1").innerHTML=first;
-            try{
-                if(rootNpower_Sign=="^"){
-                    if(operatorSign=="+"){
-                        pow();
-                        first=result+second;
-                    }else if(operatorSign=="-"){
-                        pow();
-                        first=second-result;
-                    }else if(operatorSign=="*"){
-                        pow();
-                        first=second*result;
-                    }else if(operatorSign=="/"){
-                        pow();
-                        first=second/result;
-                    }else{
-                        first=result;
-                    }
-                }else if(rootNpower_Sign=="/"){ //
-                    if(operatorSign=="+"){
-                        roots();
-                        first=result+second;
-                    }else if(operatorSign=="*"){
-                        roots();
-                        first=result*second;
-                    }else if(operatorSign=="-"){
-                        roots();
-                        first=result-second;
-                    }else if(operatorSign=="/"){
-                        roots();
-                        first=result/second;
-                    }else{
-                        roots();
-                        first=result;
-                    } 
-                }else if(operatorSign=="%"){
-                    answer=second%first;
-                }else{
-                    if(first==""){
-                        first=first;
-                    }else{
-                        try{
-                            first=eval(first)+"";
-                            if(first.length>14){
-                                fir=Math.abs((first).toPrecision(14));
-                            }
-                        }catch(first){
-                            first="<small>Incorrect input</small>";
-                            return first;
-                            first="";
-                        }
-                    }
-                }
-            }
-
-            rootNpower_Sign=op
+        else{
+            screen_expr+=d;
+            eval_expr+=d;
+            appendans(d); 
         }
     }
 }
+
+//backspace 
+function bsp(){
+    h1=ans();
+    disp1=document.getElementById("display1").innerHTML;
+    if(h1.length==1){
+        set=1;
+        displayans("0");
+        screen_expr=eval_expr="";
+    }else{
+        eval_expr=eval_expr.substring(0,eval_expr.length-1);    
+        displayans(h1.substring(0,h1.length-1));
+        screen_expr=ans();
+    }
+}
+
+//clear function
+function clearans(){
+    set=1;
+    displayans("0");
+    document.getElementById("display1").innerHTML="";
+    screen_expr=eval_expr="";
+}
+
+//when operators entered
+function operators(op){
+    if(set==1){ 
+        if(op=="-"){
+            set=0;
+            displayans(op); 
+            screen_expr=eval_expr=ans();
+        }
+    }else{
+        switch(op){
+            case "+":
+                eval_expr+="+";
+                appendans("+");
+                screen_expr=ans();
+                break;
+            case "-":
+                eval_expr+="-";
+                appendans("-");
+                screen_expr=ans();
+                break;
+            case "*":
+                appendans("&#215;");
+                screen_expr=ans();
+                eval_expr+="*";
+                break;
+            case "÷":
+                appendans("÷");
+                screen_expr=ans();
+                eval_expr+="/";
+                break;
+            case "%":
+                appendans("mod");
+                screen_expr=ans();
+                eval_expr+="%";
+                break;
+            case "pow":
+                appendans("^");
+                screen_expr=ans();
+                eval_expr+="**";
+                break;
+            case "tenpow":
+                appendans("&#215;10^");
+                screen_expr=ans();
+                eval_expr+="*10**";
+                break;
+            case "sqr":
+                appendans("^2");
+                screen_expr=ans();
+                eval_expr+="**2";
+                break;
+            case "cube":
+                appendans("^3");
+                screen_expr=ans();
+                eval_expr+="**3";
+                break;
+            case "e":
+                appendans("e+");
+                screen_expr=ans();
+                eval_expr+="e";
+                break;
+        }
+    }
+} 
+
+//when = pressed
+function equal(){
+    eval_expr=eval_expr.replaceAll("cosec","1/Math.sin");
+    eval_expr=eval_expr.replaceAll("sin","Math.sin");
+    eval_expr=eval_expr.replaceAll("cos","Math.cos");
+    eval_expr=eval_expr.replaceAll("tan","Math.tan");
+    eval_expr=eval_expr.replaceAll("sec","1/Math.cos");
+    eval_expr=eval_expr.replaceAll("cot","1/Math.tan");
+    eval_expr=eval_expr.replaceAll("log","Math.log");
+    eval_expr=eval_expr.replaceAll("floor","Math.floor");
+    eval_expr=eval_expr.replaceAll("ceil","Math.ceil");
+    eval_expr=eval_expr.replaceAll("round","Math.round");
+    eval_expr=eval_expr.replaceAll("Math.Math.","Math.");
+
+    if(/^[+-/*]{3}$/.test(eval_expr)){
+        document.getElementById("display1").innerHTML="Error";
+    }else{
+        if( eval_expr.lastIndexOf("(") > eval_expr.lastIndexOf(")") ){
+            screen_expr+=")";
+            eval_expr+=")";
+        }
+        try {
+            document.getElementById("display1").innerHTML=screen_expr;
+            displayans(eval(eval_expr)); 
+        } catch (e) {
+            if (e instanceof SyntaxError) {
+                document.getElementById("display1").innerHTML=screen_expr;
+                document.getElementById("h1").innerHTML="Error";
+            } else {
+                document.getElementById("display1").innerHTML=screen_expr;
+                document.getElementById("h1").innerHTML="Unidentified";
+            }
+        }
+    }
+}
+
+//for all math related functions
+function maths(p){
+    switch(p){
+        case "sine":
+            x="sin(";
+            y="Math.sin("
+            break;
+        case "cosine":
+            x="cos(";
+            y="Math.cos("
+            break;
+        case "tangent":
+            x="tan(";
+            y="Math.tan("
+            break;
+        case "cosec":
+            x="cosec(";
+            y="1/Math.sin("
+            break;
+        case "sec":
+            x="sec(";
+            y="1/Math.cos("
+            break;
+        case "cot":
+            x="cot(";
+            y="1/Math.tan("
+            break;
+        case "log":
+            x="log(";
+            y="Math.log(";
+            break;
+        case "logten":
+            x="log(";
+            y="Math.log10(";
+            break;
+        case "abs":
+            x="abs(";
+            y="Math.abs(";
+            break;
+        case "floor":
+            x="floor(";
+            y="Math.floor(";
+            break;
+        case "ceil":
+            x="ceil(";
+            y="Math.ceil(";
+            break;
+        case "round":
+            x="round(";
+            y="Math.round(";
+            break;
+        case "pow":
+            x="^"
+            y="**"
+            break;
+        case "sqrt":
+            x="sqrt("
+            y="Math.sqrt("
+            break;
+        case "cbrt":
+            x="cbrt("
+            y="Math.cbrt("
+            break;
+        case "recip":
+            x="reciproc("
+            y="1/("
+            break;
+        case "asin":
+            x="sin<sup>-1</sup>("
+            y="Math.asin("
+            break;
+        case "acos":
+            x="cos<sup>-1</sup>("
+            y="Math.acos("
+            break;
+        case "atan":
+            x="tan<sup>-1</sup>("
+            y="Math.atan("
+            break;
+        case "acosec":
+            x="sin<sup>-1</sup>("
+            y="Math.asin(1/"
+            break;
+        case "asec":
+            x="sec<sup>-1</sup>("
+            y="Math.acos(1/"
+            break;
+        case "acot":
+            x="cot<sup>-1</sup>("
+            y="Math.atan(1/"
+            break;
+    }
+    if(set==1){
+        set=0;
+        displayans(x);
+        screen_expr=x;
+        eval_expr=y;
+    }else{
+        if( /^[0-9]$/.test(eval_expr[eval_expr.length-1]) ){
+            appendans("&#215;"+x);
+            screen_expr+=("&#215;"+x);
+            eval_expr+=("*"+y);
+        }else{
+            appendans(x);
+            screen_expr+=x;
+            eval_expr+=y;
+        } 
+    }
+}
+
+//for pi and e
+function numb(n){
+    if(set==1){
+        set=0;
+        displayans(n=="3.14"?"π":"e"); 
+        screen_expr=n=="3.14"?"π":"e";
+        eval_expr=n;
+    }
+    else{
+        if(isop(eval_expr[eval_expr.length-1]) || isbrac(eval_expr[eval_expr.length-1])){
+            screen_expr+=n=="3.14"?"π":"e";
+            eval_expr+=n;
+            appendans( n=="3.14"?"π":"e"); 
+        }else{
+            screen_expr+=n=="3.14"?"&#215;π":"&#215;e";
+            eval_expr+=("*"+n);
+            appendans( n=="3.14"?"&#215;π":"&#215;e"); 
+        } 
+    }
+} 
+
+//for factorial
+function factorial(){
+    if(eval_expr.includes('+')||eval_expr.includes('*')||eval_expr.includes('/')||eval_expr.includes('-')){
+        for(var i=eval_expr.length-1;i>=0;i--){
+            if(eval_expr[i]=='*'||eval_expr[i]=='-'||eval_expr[i]=='/'||eval_expr[i]=='-')
+                break;
+        }
+        x=eval_expr.substring(i+1,eval_expr.length);
+        eval_expr=eval_expr.substring(0,i+1)+(fact(parseInt(x))).toString();
+        screen_expr=screen_expr.substring(0,i+1)+(fact(parseInt(x))).toString();
+        displayans(screen_expr);
+    }else{
+        if(set==1){
+            screen_expr="0!";
+            displayans("0!")
+            eval_expr="1";
+            set=0;
+        }else{
+            screen_expr+="!";
+            appendans("!");
+            eval_expr=fact(parseInt(eval_expr)).toString();
+        }
+    }
+}
+
+//for all memory related functions
+function mem(m){
+    switch(m){
+        case "mp":
+            memory+=(eval(eval_expr));
+            break;
+        case "mm":
+            memory-=(eval(eval_expr));
+            break;
+        case "mc":
+            memory=0;
+            break;
+        case "mr":
+            displayans(memory.toString());
+            break;
+        case "ms":
+            memory=parseInt(eval(eval_expr));
+            break;
+    }
+}
+
+//for +/-
+function pm(){
+    for(var j=eval_expr.length-1;j>=0;j--){
+        if( /^[*+-/]$/.test(eval_expr[j]) )
+        break;
+    }
+    if(j==-1){
+        screen_expr="-"+screen_expr;
+        eval_expr="-"+eval_expr;
+        displayans(screen_expr);
+    }else{
+        if(eval_expr[j]=="-"){
+            screen_expr=screen_expr.substring(0,j)+"+"+screen_expr.substring(j+1,screen_expr.length);
+            eval_expr=eval_expr.substring(0,j)+"+"+eval_expr.substring(j+1,eval_expr.length);
+            displayans(screen_expr);
+        }else if(eval_expr[j]=="+"){
+            screen_expr=screen_expr.substring(0,j)+"-"+screen_expr.substring(j+1,screen_expr.length);
+            eval_expr=eval_expr.substring(0,j)+"-"+eval_expr.substring(j+1,eval_expr.length);
+            displayans(screen_expr);
+        }else{
+            screen_expr=screen_expr.substring(0,j+1)+"-"+screen_expr.substring(j+1,screen_expr.length);
+            eval_expr=eval_expr.substring(0,j+1)+"-"+eval_expr.substring(j+1,eval_expr.length);
+            displayans(screen_expr);
+        }
+    }
+}
+
+//keypress event
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    if( /^[0-9.()]$/.test(key)){
+        digit(key);
+    }else if(/^[+-/*%^]$/.test(key)){
+        operators(key=="^"?"pow":key);
+    }else{
+        switch(key){
+            case "Enter":
+                equal();
+                break;
+            case "Backspace":
+                bsp();
+                break;
+            case "!":
+                factorial();
+                break;
+            default:
+                keyarr=["Alt","Shift","Tab","CapsLock","Control","Escape","Insert","Delete","End","PageDown","PageUp","ArrowRight","ArrowLeft","ArrowDown","ArrowUp","Home","ScrollLock","NumLock","Pause"];
+                if(!keyarr.includes(key)){
+                    if(set==1){
+                        set=0;
+                        displayans(key);
+                        screen_expr=key;
+                        eval_expr=key;
+                    }else{
+                        appendans(key);
+                        screen_expr+=key;
+                        eval_expr+=key;
+                    }
+                }
+        }
+    }
+});
