@@ -1,6 +1,6 @@
-var set = 1;
-var memory = 0;
-var screen_expr = "",
+let set = 1;
+let memory = 0;
+let screen_expr = "",
   eval_expr = "";
 
 function displayans(d) {
@@ -144,6 +144,14 @@ function operators(op) {
   }
 }
 
+//for appending bracket if user has not added
+function appendbracket() {
+  if (eval_expr.lastIndexOf("(") > eval_expr.lastIndexOf(")")) {
+    screen_expr += ")";
+    eval_expr += ")";
+  }
+}
+
 //when = pressed
 function equal() {
   eval_expr = eval_expr.replaceAll("cosec", "1/Math.sin");
@@ -158,24 +166,18 @@ function equal() {
   eval_expr = eval_expr.replaceAll("round", "Math.round");
   eval_expr = eval_expr.replaceAll("Math.Math.", "Math.");
 
-  if (/^[+-/*]{3}$/.test(eval_expr)) {
-    document.getElementById("display1").innerHTML = "Error";
-  } else {
-    if (eval_expr.lastIndexOf("(") > eval_expr.lastIndexOf(")")) {
-      screen_expr += ")";
-      eval_expr += ")";
-    }
-    try {
+  appendbracket();
+
+  try {
+    document.getElementById("display1").innerHTML = screen_expr;
+    displayans(eval(eval_expr));
+  } catch (e) {
+    if (e instanceof SyntaxError) {
       document.getElementById("display1").innerHTML = screen_expr;
-      displayans(eval(eval_expr));
-    } catch (e) {
-      if (e instanceof SyntaxError) {
-        document.getElementById("display1").innerHTML = screen_expr;
-        document.getElementById("h1").innerHTML = "Error";
-      } else {
-        document.getElementById("display1").innerHTML = screen_expr;
-        document.getElementById("h1").innerHTML = "Unidentified";
-      }
+      document.getElementById("h1").innerHTML = "Error";
+    } else {
+      document.getElementById("display1").innerHTML = screen_expr;
+      document.getElementById("h1").innerHTML = "Error";
     }
   }
 }

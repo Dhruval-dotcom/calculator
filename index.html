@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,9 +13,9 @@
     <div class="card">
         <div class="input-t">
             <div id="display-container">
-                <div id="display1"> <small><small><span></span></small></small></div>
+                <div id="display1"></div>
             </div>
-            <div id="h1">0<small><small><span></span></small></small></div>
+            <div id="h1">0</div>
         </div>
         <div class="memory">
             <button onclick='mem("mc");this.blur();' class="innerm">MC</button>
@@ -62,8 +61,8 @@
                     <td><button onclick='numb("3.14");this.blur();' class="offwhite">π</button></td>
                     <td><button onclick='numb("2.718");this.blur();' class="offwhite">e</button></td>
                     <td><button onclick='clearans();this.blur()' class="offwhite">C</button></td>
-                    <td><button onclick='bsp();this.blur();' class="offwhite"><img src="images/backspace.png"
-                                style="padding-top: 4px;" height="25px" alt=""></button></td>
+                    <td><button onclick='bsp();this.blur();' class="offwhite backspace"><img src="images/backspace.png"
+                                height="25px"></button></td>
                 </tr>
                 <tr>
                     <td><button onclick='operators("sqr");this.blur();' class="offwhite">x<sup>2</sup></button></td>
@@ -75,36 +74,36 @@
                 <tr>
                     <td><button onclick='maths("sqrt");this.blur();' class="offwhite"><sup>2</sup>√x</button></td>
                     <td><button onclick='digit("(");this.blur();' class="offwhite">(</button></td>
-                    <td><button onclick='digit(")");this.blur();'this.blur();' class="offwhite">)</button></td>
+                    <td><button onclick='digit(")");this.blur();' this.blur();' class="offwhite">)</button></td>
                     <td><button onclick='factorial();this.blur();' class="offwhite">n!</button></td>
                     <td><button onclick='operators("÷");this.blur();' class="offwhite">÷</button></td>
                 </tr>
                 <tr>
                     <td><button onclick='operators("pow");this.blur();' class="offwhite">x<sup>y</sup></button></td>
-                    <td><button class="wh" onclick='digit("7");this.blur();'>7</button></td>
-                    <td><button onclick='digit("8");this.blur();' class="wh">8</button></td>
-                    <td><button onclick='digit("9");this.blur();' class="wh">9</button></td>
+                    <td><button onclick='digit("7");this.blur();' class="whitekey">7</button></td>
+                    <td><button onclick='digit("8");this.blur();' class="whitekey">8</button></td>
+                    <td><button onclick='digit("9");this.blur();' class="whitekey">9</button></td>
                     <td><button onclick='operators("*");this.blur();' class="offwhite">&#215;</button></td>
                 </tr>
                 <tr>
                     <td><button onclick='operators("tenpow");this.blur();' class="offwhite">10<sup>x</sup></button></td>
-                    <td><button onclick='digit("4");this.blur();' class="wh">4</button></td>
-                    <td><button onclick='digit("5");this.blur();' class="wh">5</button></td>
-                    <td><button onclick='digit("6");this.blur();' class="wh">6</button></td>
+                    <td><button onclick='digit("4");this.blur();' class="whitekey">4</button></td>
+                    <td><button onclick='digit("5");this.blur();' class="whitekey">5</button></td>
+                    <td><button onclick='digit("6");this.blur();' class="whitekey">6</button></td>
                     <td><button onclick='operators("-");this.blur();' class="offwhite">-</button></td>
                 </tr>
                 <tr>
                     <td><button onclick='maths("logten");this.blur();' class="offwhite">log</button></td>
-                    <td><button onclick='digit("1");this.blur();' class="wh">1</button></td>
-                    <td><button onclick='digit("2");this.blur();' class="wh">2</button></td>
-                    <td><button onclick='digit("3");this.blur();' class="wh">3</button></td>
+                    <td><button onclick='digit("1");this.blur();' class="whitekey">1</button></td>
+                    <td><button onclick='digit("2");this.blur();' class="whitekey">2</button></td>
+                    <td><button onclick='digit("3");this.blur();' class="whitekey">3</button></td>
                     <td><button onclick='operators("+");this.blur();' class="offwhite">+</button></td>
                 </tr>
                 <tr>
                     <td><button onclick='maths("log");this.blur();' class="offwhite">ln</button></td>
-                    <td><button onclick='pm();this.blur();' class="wh"><sup>+</sup>/-</button></td>
-                    <td><button onclick='digit("0");this.blur();' class="wh">0</button></td>
-                    <td><button onclick='digit("dot");this.blur();' class="wh">.</button></td>
+                    <td><button onclick='pm();this.blur();' class="whitekey"><sup>+</sup>/-</button></td>
+                    <td><button onclick='digit("0");this.blur();' class="whitekey">0</button></td>
+                    <td><button onclick='digit("dot");this.blur();' class="whitekey">.</button></td>
                     <td><button id="equal" onclick='equal();this.blur();'>=</button></td>
                 </tr>
             </table>
@@ -112,4 +111,5 @@
     </div>
     <script src="index.js"></script>
 </body>
+
 </html>
