@@ -1,3 +1,3 @@
 ## Here is screenshot of practical of calculator
 
-![alt text](https://github.com/Dhruval-dotcom/calculator/blob/calc/images/Screenshot.png?raw=true)
+<img src="images/Screenshot from 2023-03-21 15-41-29.png">
